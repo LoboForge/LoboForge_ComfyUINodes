@@ -1,0 +1,131 @@
+{
+  "last_node_id": 3,
+  "last_link_id": 2,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoboForgeLoadImageBatch",
+      "pos": [120, 160],
+      "size": [400, 340],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [1],
+          "slot_index": 0
+        },
+        {
+          "name": "filename_text",
+          "type": "STRING",
+          "links": [2],
+          "slot_index": 1
+        },
+        {
+          "name": "file_count",
+          "type": "INT",
+          "links": null,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoboForgeLoadImageBatch"
+      },
+      "widgets_values": [
+        "custom_nodes/LoboForge/test_images",
+        "*",
+        0,
+        "in folder order",
+        0,
+        "randomize",
+        0,
+        "false",
+        "true"
+      ],
+      "title": "LoboForge Load Folder Images"
+    },
+    {
+      "id": 2,
+      "type": "LoboForgeLiveImagePreview",
+      "pos": [600, 120],
+      "size": [360, 360],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "filename_text",
+          "type": "STRING",
+          "link": 2
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "LoboForgeLiveImagePreview"
+      },
+      "widgets_values": [],
+      "title": "LoboForge Preview Images (Live)"
+    },
+    {
+      "id": 3,
+      "type": "PreviewAny",
+      "pos": [600, 520],
+      "size": [320, 160],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [],
+      "title": "Preview filename (optional)"
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "IMAGE"],
+    [2, 1, 1, 2, 1, "STRING"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.9,
+      "offset": [0, 0]
+    },
+    "info": {
+      "name": "LoboForge Load Folder Images Preview",
+      "author": "LoboForge",
+      "description": "Load Folder Images → LoboForge Preview Images (Live). how_many=0 loads every image; Queue once and tiles fill in as each list item finishes. Uses custom_nodes/LoboForge/test_images. Restart ComfyUI after updating LoboForge.",
+      "version": "3.0",
+      "category": "LoboForge",
+      "nodes": [
+        "LoboForgeLoadImageBatch",
+        "LoboForgeLiveImagePreview"
+      ]
+    }
+  },
+  "version": 0.4
+}

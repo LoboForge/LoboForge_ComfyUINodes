@@ -1,0 +1,117 @@
+{
+  "last_node_id": 2,
+  "last_link_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoboForgeLoadFolderPrompts",
+      "pos": [
+        80,
+        120
+      ],
+      "size": [
+        420,
+        300
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            1
+          ],
+          "slot_index": 0,
+          "shape": 6
+        },
+        {
+          "name": "filename",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 1,
+          "shape": 6
+        },
+        {
+          "name": "file_count",
+          "type": "INT",
+          "links": null,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoboForgeLoadFolderPrompts"
+      },
+      "widgets_values": [
+        "custom_nodes/LoboForge/test_prompts",
+        "*.txt",
+        0,
+        "in folder order",
+        0,
+        "fixed",
+        0
+      ],
+      "title": "LoboForge Load Folder Prompts"
+    },
+    {
+      "id": 2,
+      "type": "PreviewAny",
+      "pos": [
+        560,
+        120
+      ],
+      "size": [
+        360,
+        200
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny",
+        "cnr_id": "comfy-core"
+      },
+      "widgets_values": [],
+      "title": "Preview prompt text"
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      2,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "info": {
+      "name": "LoboForge Load Folder Prompts Preview",
+      "description": "Synthetic test_prompts \u2192 PreviewAny. Restart ComfyUI after updating LoboForge.",
+      "nodes": [
+        "LoboForgeLoadFolderPrompts",
+        "PreviewAny"
+      ]
+    }
+  },
+  "version": 0.4
+}

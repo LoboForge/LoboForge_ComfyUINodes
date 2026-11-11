@@ -1,0 +1,10 @@
+[project]
+name = "loboforge"
+description = "LoboForge nodes for batch image loading, live image grid preview, video preview history, and a local prompt repository."
+version = "1.0.0"
+license = "MIT"
+
+[tool.comfy]
+PublisherId = "loboforge"
+DisplayName = "LoboForge"
+Icon = "./icon.svg"

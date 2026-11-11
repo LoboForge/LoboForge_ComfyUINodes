@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+id_rsa
+id_rsa.*
+credentials.json
+secrets.json
+*.token
+*token*.txt
+.huggingface/
+.hf/
+training.env
+*.local.yaml
+*.local.yml
+
+# Models / weights (keep the pack's required turbo grid)
+*.safetensors
+!h3_silu_temb_grid.safetensors
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.gguf
+models/
+output/
+outputs/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.code-workspace
+.history/
+.claude/
+*.log
+.cache/
+
+# Tests / local scratch
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+tmp/
+temp/
