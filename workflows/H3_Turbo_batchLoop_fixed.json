@@ -374,7 +374,7 @@
           "links": []
         }
       ],
-      "title": "Bypassed — replaced by LoboForge Save Video (Named)",
+      "title": "Bypassed \u2014 replaced by LoboForge Save Video (Named)",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.39.2",
@@ -473,10 +473,10 @@
         }
       },
       "widgets_values": [
-        "**Resolution Selector reference — multiple = 32, before RTX.**\n\nThis selector treats 1 MP as 1024 × 1024 pixels. Dimensions are rounded to multiples of 32.\n\n| MP | 1:1 — Square | 3:2 — Photo | 4:3 — Standard | 16:9 — Widescreen |\n|---:|:---:|:---:|:---:|:---:|\n| 0.2 | 448 × 448 | 576 × 384 | 544 × 384 | 608 × 352 |\n| 0.3 | 576 × 576 | 672 × 448 | 640 × 480 | 736 × 416 |\n| 0.4 | 640 × 640 | 800 × 544 | 736 × 576 | 864 × 480 |\n| 0.5 | 736 × 736 | 896 × 576 | 832 × 640 | 960 × 544 |\n| 0.6 | 800 × 800 | 960 × 640 | 928 × 672 | 1056 × 608 |\n| 0.7 | 864 × 864 | 1056 × 704 | 992 × 736 | 1152 × 640 |\n| 0.8 | 928 × 928 | 1120 × 736 | 1056 × 800 | 1216 × 672 |\n| 0.9 | 960 × 960 | 1184 × 800 | 1120 × 832 | 1280 × 736 |\n| 0.98 | 1024 × 1024 | 1248 × 832 | 1184 × 864 | 1344 × 768 |\n| 1.0 | 1024 × 1024 | 1248 × 832 | 1184 × 896 | 1376 × 768 |\n| 1.2 | 1120 × 1120 | 1376 × 928 | 1280 × 960 | 1504 × 832 |\n| 1.5 | 1248 × 1248 | 1536 × 1024 | 1440 × 1088 | 1664 × 928 |\n| 1.8 | 1376 × 1376 | 1696 × 1120 | 1600 × 1184 | 1824 × 1024 |\n| 2.0 | 1440 × 1440 | 1760 × 1184 | 1664 × 1248 | 1920 × 1088 |\n\nThe second-pass upscale follows the actual first-pass aspect ratio, so its rounded dimensions can differ slightly from these references. RTX may increase the exported dimensions further."
+        "**Resolution Selector reference \u2014 multiple = 32, before RTX.**\n\nThis selector treats 1 MP as 1024 \u00d7 1024 pixels. Dimensions are rounded to multiples of 32.\n\n| MP | 1:1 \u2014 Square | 3:2 \u2014 Photo | 4:3 \u2014 Standard | 16:9 \u2014 Widescreen |\n|---:|:---:|:---:|:---:|:---:|\n| 0.2 | 448 \u00d7 448 | 576 \u00d7 384 | 544 \u00d7 384 | 608 \u00d7 352 |\n| 0.3 | 576 \u00d7 576 | 672 \u00d7 448 | 640 \u00d7 480 | 736 \u00d7 416 |\n| 0.4 | 640 \u00d7 640 | 800 \u00d7 544 | 736 \u00d7 576 | 864 \u00d7 480 |\n| 0.5 | 736 \u00d7 736 | 896 \u00d7 576 | 832 \u00d7 640 | 960 \u00d7 544 |\n| 0.6 | 800 \u00d7 800 | 960 \u00d7 640 | 928 \u00d7 672 | 1056 \u00d7 608 |\n| 0.7 | 864 \u00d7 864 | 1056 \u00d7 704 | 992 \u00d7 736 | 1152 \u00d7 640 |\n| 0.8 | 928 \u00d7 928 | 1120 \u00d7 736 | 1056 \u00d7 800 | 1216 \u00d7 672 |\n| 0.9 | 960 \u00d7 960 | 1184 \u00d7 800 | 1120 \u00d7 832 | 1280 \u00d7 736 |\n| 0.98 | 1024 \u00d7 1024 | 1248 \u00d7 832 | 1184 \u00d7 864 | 1344 \u00d7 768 |\n| 1.0 | 1024 \u00d7 1024 | 1248 \u00d7 832 | 1184 \u00d7 896 | 1376 \u00d7 768 |\n| 1.2 | 1120 \u00d7 1120 | 1376 \u00d7 928 | 1280 \u00d7 960 | 1504 \u00d7 832 |\n| 1.5 | 1248 \u00d7 1248 | 1536 \u00d7 1024 | 1440 \u00d7 1088 | 1664 \u00d7 928 |\n| 1.8 | 1376 \u00d7 1376 | 1696 \u00d7 1120 | 1600 \u00d7 1184 | 1824 \u00d7 1024 |\n| 2.0 | 1440 \u00d7 1440 | 1760 \u00d7 1184 | 1664 \u00d7 1248 | 1920 \u00d7 1088 |\n\nThe second-pass upscale follows the actual first-pass aspect ratio, so its rounded dimensions can differ slightly from these references. RTX may increase the exported dimensions further."
       ],
       "widgets_values_named": {
-        "text": "**Resolution Selector reference — multiple = 32, before RTX.**\n\nThis selector treats 1 MP as 1024 × 1024 pixels. Dimensions are rounded to multiples of 32.\n\n| MP | 1:1 — Square | 3:2 — Photo | 4:3 — Standard | 16:9 — Widescreen |\n|---:|:---:|:---:|:---:|:---:|\n| 0.2 | 448 × 448 | 576 × 384 | 544 × 384 | 608 × 352 |\n| 0.3 | 576 × 576 | 672 × 448 | 640 × 480 | 736 × 416 |\n| 0.4 | 640 × 640 | 800 × 544 | 736 × 576 | 864 × 480 |\n| 0.5 | 736 × 736 | 896 × 576 | 832 × 640 | 960 × 544 |\n| 0.6 | 800 × 800 | 960 × 640 | 928 × 672 | 1056 × 608 |\n| 0.7 | 864 × 864 | 1056 × 704 | 992 × 736 | 1152 × 640 |\n| 0.8 | 928 × 928 | 1120 × 736 | 1056 × 800 | 1216 × 672 |\n| 0.9 | 960 × 960 | 1184 × 800 | 1120 × 832 | 1280 × 736 |\n| 0.98 | 1024 × 1024 | 1248 × 832 | 1184 × 864 | 1344 × 768 |\n| 1.0 | 1024 × 1024 | 1248 × 832 | 1184 × 896 | 1376 × 768 |\n| 1.2 | 1120 × 1120 | 1376 × 928 | 1280 × 960 | 1504 × 832 |\n| 1.5 | 1248 × 1248 | 1536 × 1024 | 1440 × 1088 | 1664 × 928 |\n| 1.8 | 1376 × 1376 | 1696 × 1120 | 1600 × 1184 | 1824 × 1024 |\n| 2.0 | 1440 × 1440 | 1760 × 1184 | 1664 × 1248 | 1920 × 1088 |\n\nThe second-pass upscale follows the actual first-pass aspect ratio, so its rounded dimensions can differ slightly from these references. RTX may increase the exported dimensions further."
+        "text": "**Resolution Selector reference \u2014 multiple = 32, before RTX.**\n\nThis selector treats 1 MP as 1024 \u00d7 1024 pixels. Dimensions are rounded to multiples of 32.\n\n| MP | 1:1 \u2014 Square | 3:2 \u2014 Photo | 4:3 \u2014 Standard | 16:9 \u2014 Widescreen |\n|---:|:---:|:---:|:---:|:---:|\n| 0.2 | 448 \u00d7 448 | 576 \u00d7 384 | 544 \u00d7 384 | 608 \u00d7 352 |\n| 0.3 | 576 \u00d7 576 | 672 \u00d7 448 | 640 \u00d7 480 | 736 \u00d7 416 |\n| 0.4 | 640 \u00d7 640 | 800 \u00d7 544 | 736 \u00d7 576 | 864 \u00d7 480 |\n| 0.5 | 736 \u00d7 736 | 896 \u00d7 576 | 832 \u00d7 640 | 960 \u00d7 544 |\n| 0.6 | 800 \u00d7 800 | 960 \u00d7 640 | 928 \u00d7 672 | 1056 \u00d7 608 |\n| 0.7 | 864 \u00d7 864 | 1056 \u00d7 704 | 992 \u00d7 736 | 1152 \u00d7 640 |\n| 0.8 | 928 \u00d7 928 | 1120 \u00d7 736 | 1056 \u00d7 800 | 1216 \u00d7 672 |\n| 0.9 | 960 \u00d7 960 | 1184 \u00d7 800 | 1120 \u00d7 832 | 1280 \u00d7 736 |\n| 0.98 | 1024 \u00d7 1024 | 1248 \u00d7 832 | 1184 \u00d7 864 | 1344 \u00d7 768 |\n| 1.0 | 1024 \u00d7 1024 | 1248 \u00d7 832 | 1184 \u00d7 896 | 1376 \u00d7 768 |\n| 1.2 | 1120 \u00d7 1120 | 1376 \u00d7 928 | 1280 \u00d7 960 | 1504 \u00d7 832 |\n| 1.5 | 1248 \u00d7 1248 | 1536 \u00d7 1024 | 1440 \u00d7 1088 | 1664 \u00d7 928 |\n| 1.8 | 1376 \u00d7 1376 | 1696 \u00d7 1120 | 1600 \u00d7 1184 | 1824 \u00d7 1024 |\n| 2.0 | 1440 \u00d7 1440 | 1760 \u00d7 1184 | 1664 \u00d7 1248 | 1920 \u00d7 1088 |\n\nThe second-pass upscale follows the actual first-pass aspect ratio, so its rounded dimensions can differ slightly from these references. RTX may increase the exported dimensions further."
       },
       "color": "#222",
       "bgcolor": "#000"
@@ -517,7 +517,7 @@
         }
       },
       "widgets_values": [
-        10
+        1.0
       ],
       "widgets_values_named": {
         "value": 10
@@ -879,8 +879,8 @@
       ],
       "widgets_values_named": {
         "seed": -1,
-        "🎲 Randomize Each Time": "",
-        "🎲 New Fixed Random": "",
+        "\ud83c\udfb2 Randomize Each Time": "",
+        "\ud83c\udfb2 New Fixed Random": "",
         "USE_LAST_SEED": ""
       },
       "color": "#332922",
@@ -1129,7 +1129,7 @@
           "link": 310
         },
         {
-          "label": "Duration — Preview + Full",
+          "label": "Duration \u2014 Preview + Full",
           "name": "on_false",
           "type": "FLOAT",
           "link": 311
@@ -1507,7 +1507,7 @@
           ]
         }
       ],
-      "title": "Output grain strength — 0 = OFF",
+      "title": "Output grain strength \u2014 0 = OFF",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.33.2",
@@ -1695,7 +1695,7 @@
       "widgets_values": [
         "/workspace/dataset",
         "*",
-        0,
+        3,
         "in folder order",
         0,
         "fixed",
@@ -1706,7 +1706,7 @@
       "widgets_values_named": {
         "folder": "/workspace/dataset",
         "pattern": "*",
-        "how_many": 0,
+        "how_many": 3,
         "order": "in folder order",
         "seed": 0,
         "control_after_generate": "fixed",
@@ -1766,7 +1766,7 @@
         "file_extension": "txt",
         "overwrite": true
       },
-      "title": "Bypassed — caption now written by Save Video (Named)"
+      "title": "Bypassed \u2014 caption now written by Save Video (Named)"
     },
     {
       "id": 199,
@@ -2481,7 +2481,7 @@
               109
             ],
             "localized_name": "on_false",
-            "label": "Duration — Preview + Full",
+            "label": "Duration \u2014 Preview + Full",
             "shape": 7,
             "pos": [
               -179.849609375,
@@ -3256,7 +3256,7 @@
               "method": false,
               "clear_queue": false,
               "alert_on_trigger": false,
-              "Status": "➡️ EXECUTION CONTINUING! Time: 16:38:27.599006"
+              "Status": "\u27a1\ufe0f EXECUTION CONTINUING! Time: 16:38:27.599006"
             }
           },
           {
@@ -4457,7 +4457,7 @@
               },
               {
                 "name": "saturation_mix",
-                "type": "FLOAT",
+                "type": "STRING",
                 "widget": {
                   "name": "saturation_mix"
                 }
@@ -4518,26 +4518,16 @@
               18,
               false,
               0.005,
-              0.25,
+              "0.25",
               "medium"
             ],
             "widgets_values_named": {
-              "upscale": false,
-              "upscale_method": "lanczos",
-              "upscale_by": 2,
-              "interpolate": false,
-              "original_fps": 24,
-              "interpolate_by": 2,
-              "dual_pass_rife": false,
-              "grain": true,
-              "grain_intensity": 0.005,
-              "saturation_mix": 0.25,
-              "compress": true,
+              "fps": 24.0,
               "crf": 18,
-              "batching_mode": "custom",
-              "custom_batch_size": 4,
-              "encoder_preset": "slow",
-              "h264_profile": "auto"
+              "grain": false,
+              "grain_intensity": 0.005,
+              "saturation_mix": "0.25",
+              "encoder_preset": "medium"
             }
           },
           {
@@ -4728,7 +4718,7 @@
         },
         "revision": 0,
         "config": {},
-        "name": "Output saving quality — encoder preset",
+        "name": "Output saving quality \u2014 encoder preset",
         "inputNode": {
           "id": -10,
           "bounding": [
@@ -4822,7 +4812,7 @@
                 "links": []
               }
             ],
-            "title": "Encoder presets — fixed workflow options",
+            "title": "Encoder presets \u2014 fixed workflow options",
             "properties": {
               "cnr_id": "comfy-core",
               "ver": "0.39.2",

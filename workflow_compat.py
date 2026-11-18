@@ -199,9 +199,9 @@ class LoboForgeEncodeVideo:
 
     @classmethod
     def INPUT_TYPES(cls):
-        # Slot order (required then optional) must stay stable for saved workflows:
-        # 0 images, 1 fps, 2 crf, 3 grain, 4 grain_intensity, 5 saturation_mix,
-        # 6 encoder_preset, 7 audio_pass, 8 video
+        # Widget order must stay stable for saved workflows / subgraph widgets_values:
+        # fps, crf, grain, grain_intensity, saturation_mix, encoder_preset
+        # (images/audio/video are sockets; keep images required so encode cannot validate empty).
         return {
             "required": {
                 "images": ("IMAGE",),
@@ -209,7 +209,9 @@ class LoboForgeEncodeVideo:
                 "crf": ("INT", {"default": 18, "min": 0, "max": 51, "step": 1}),
                 "grain": ("BOOLEAN", {"default": False}),
                 "grain_intensity": ("FLOAT", {"default": 0.025, "min": 0.0, "max": 1.0, "step": 0.001}),
-                "saturation_mix": ("FLOAT", {"default": 0.25, "min": 0.0, "max": 1.0, "step": 0.01}),
+                # STRING so Lokken→LoboForge widget shifts (preset text in this slot) cannot
+                # fail prompt validation and drop the SaveVideoNamed output entirely.
+                "saturation_mix": ("STRING", {"default": "0.25"}),
                 "encoder_preset": (list(ENCODER_PRESETS), {"default": "medium"}),
             },
             "optional": {
@@ -233,11 +235,29 @@ class LoboForgeEncodeVideo:
         crf,
         grain=False,
         grain_intensity=0.025,
-        saturation_mix=0.25,
+        saturation_mix="0.25",
         encoder_preset="medium",
         audio_pass=None,
         video=None,
     ):
+        encoder_preset = str(encoder_preset or "medium")
+        mix_raw = saturation_mix if saturation_mix is not None else "0.25"
+        if isinstance(mix_raw, str) and mix_raw in ENCODER_PRESETS:
+            # Mis-mapped encoder preset from an older widgets_values layout.
+            if encoder_preset not in ENCODER_PRESETS:
+                encoder_preset = mix_raw
+            elif encoder_preset == "medium":
+                encoder_preset = mix_raw
+            mix = 0.25
+        else:
+            try:
+                mix = float(mix_raw)
+            except (TypeError, ValueError):
+                mix = 0.25
+        if encoder_preset not in ENCODER_PRESETS:
+            encoder_preset = "medium"
+        saturation_mix = mix
+
         if video is not None:
             components = video.get_components()
             images = components.images
@@ -255,7 +275,6 @@ class LoboForgeEncodeVideo:
                 grain_intensity,
                 saturation_mix=saturation_mix,
             ).to(device="cpu")
-
         video_out = InputImpl.VideoFromComponents(
             Types.VideoComponents(
                 images=frames,
