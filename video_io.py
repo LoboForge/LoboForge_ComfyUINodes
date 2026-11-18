@@ -433,6 +433,126 @@ class LoboForgeSaveText:
         return (text,)
 
 
+def video_filename_prefix(filename_text, folder="video/H3_batch"):
+    """Build a SaveVideo-safe prefix: folder/stem (extension stripped, path sanitized)."""
+    folder = (folder or "video/H3_batch").strip().replace("\\", "/")
+    folder = folder.strip("/") or "video/H3_batch"
+    raw = os.path.basename(str(filename_text or "").strip()) or "video"
+    stem = os.path.splitext(raw)[0].strip() or "video"
+    stem = "".join(c if (c.isalnum() or c in "-_") else "_" for c in stem)
+    return f"{folder}/{stem}"
+
+
+class LoboForgeVideoFilenamePrefix:
+    """Turn Load Folder Images filename_text into a SaveVideo filename_prefix."""
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "filename_text": ("STRING", {
+                    "forceInput": True,
+                    "tooltip": "From LoboForge Load Folder Images (fan-out list item).",
+                }),
+                "folder": ("STRING", {
+                    "default": "video/H3_batch",
+                    "tooltip": "Subfolder under ComfyUI output/. One mp4 per source image stem.",
+                }),
+            },
+        }
+
+    CATEGORY = "LoboForge"
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("filename_prefix",)
+    FUNCTION = "build"
+    DESCRIPTION = (
+        "Build output/<folder>/<stem>_#####_.mp4 prefixes from batch filenames. "
+        "Wire to SaveVideo filename_prefix so each fan-out item gets its own file."
+    )
+
+    def build(self, filename_text, folder="video/H3_batch"):
+        return (video_filename_prefix(filename_text, folder),)
+
+
+class LoboForgeSaveVideoNamed:
+    """Save VIDEO using the source image stem — one file per OUTPUT_IS_LIST fan-out item."""
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {
+            "required": {
+                "video": ("VIDEO",),
+                "filename_text": ("STRING", {
+                    "forceInput": True,
+                    "tooltip": "From LoboForge Load Folder Images filename_text (same fan-out index).",
+                }),
+                "folder": ("STRING", {
+                    "default": "video/H3_batch",
+                    "tooltip": "Subfolder under ComfyUI output/.",
+                }),
+                "format": (["auto", "mp4", "mkv", "webm", "mov"], {"default": "mp4"}),
+                "codec": (["auto", "h264", "av1", "prores"], {"default": "auto"}),
+            },
+            "hidden": {
+                "prompt": "PROMPT",
+                "extra_pnginfo": "EXTRA_PNGINFO",
+            },
+        }
+
+    CATEGORY = "LoboForge"
+    RETURN_TYPES = ("VIDEO",)
+    RETURN_NAMES = ("video",)
+    OUTPUT_NODE = True
+    FUNCTION = "save"
+    DESCRIPTION = (
+        "Save each fan-out VIDEO under output/<folder>/<stem>_#####_.mp4. "
+        "Prefer this over a shared SaveVideo prefix when batching folder images."
+    )
+
+    def save(
+        self,
+        video,
+        filename_text,
+        folder="video/H3_batch",
+        format="mp4",
+        codec="auto",
+        prompt=None,
+        extra_pnginfo=None,
+    ):
+        filename_prefix = video_filename_prefix(filename_text, folder)
+        format_name = format or "mp4"
+        codec_name = codec or "auto"
+        if format_name == "auto":
+            format_name = {"av1": "webm", "prores": "mov"}.get(codec_name, "mp4")
+        width, height = video.get_dimensions()
+        full_output_folder, filename, counter, subfolder, _prefix = folder_paths.get_save_image_path(
+            filename_prefix,
+            folder_paths.get_output_directory(),
+            width,
+            height,
+        )
+        metadata = None
+        if extra_pnginfo or prompt is not None:
+            metadata = {}
+            if extra_pnginfo:
+                metadata.update(extra_pnginfo)
+            if prompt is not None:
+                metadata["prompt"] = prompt
+        ext = Types.VideoContainer.get_extension(format_name)
+        file = f"{filename}_{counter:05}_.{ext}"
+        path = os.path.join(full_output_folder, file)
+        video.save_to(
+            path,
+            format=Types.VideoContainer(format_name),
+            codec=Types.VideoCodec(codec_name),
+            metadata=metadata,
+        )
+        return {
+            "ui": PreviewVideo([SavedResult(file, subfolder, FolderType.output)]).as_dict(),
+            "result": (video,),
+        }
+
+
 NODE_CLASS_MAPPINGS = {
     "LoboForgeSaveClipAndLastFrame": LoboForgeSaveClipAndLastFrame,
     "LoboForgeLoadSegmentLastFrame": LoboForgeLoadSegmentLastFrame,
@@ -443,6 +563,8 @@ NODE_CLASS_MAPPINGS = {
     "LoboForgeLoadImagePath": LoboForgeLoadImagePath,
     "LoboForgeLoadTextFile": LoboForgeLoadTextFile,
     "LoboForgeSaveText": LoboForgeSaveText,
+    "LoboForgeVideoFilenamePrefix": LoboForgeVideoFilenamePrefix,
+    "LoboForgeSaveVideoNamed": LoboForgeSaveVideoNamed,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
@@ -455,4 +577,6 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "LoboForgeLoadImagePath": "LoboForge Load Image Path",
     "LoboForgeLoadTextFile": "LoboForge Load Text File",
     "LoboForgeSaveText": "LoboForge Save Text",
+    "LoboForgeVideoFilenamePrefix": "LoboForge Video Filename Prefix",
+    "LoboForgeSaveVideoNamed": "LoboForge Save Video (Named)",
 }

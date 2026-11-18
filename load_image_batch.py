@@ -124,7 +124,12 @@ class LoboForgeLoadImageBatch:
                 "allow_RGBA_output": (["false", "true"],),
             },
             "optional": {
-                "filename_text_extension": (["true", "false"],),
+                "filename_text_extension": (["false", "true"], {
+                    "tooltip": (
+                        "false = stem only (foo.png → foo) for SaveVideo / "
+                        "LoboForge Save Video (Named) prefixes. true = keep basename."
+                    ),
+                }),
             },
         }
 
@@ -136,8 +141,10 @@ class LoboForgeLoadImageBatch:
     DESCRIPTION = (
         "Load images from a folder in one Queue. "
         "how_many=0 loads every matching file; N loads that many. "
-        "image and filename_text fan out downstream (OUTPUT_IS_LIST). "
-        "No separate counter node."
+        "image and filename_text fan out downstream (OUTPUT_IS_LIST) — "
+        "MiniMax H3 does not iterate a stacked batch; each list item is one ref. "
+        "Use LoboForge Save Video (Named) or Video Filename Prefix so each item "
+        "writes its own mp4. No separate counter node."
     )
 
     def load_folder_images(
@@ -149,7 +156,7 @@ class LoboForgeLoadImageBatch:
         seed,
         start_at,
         allow_RGBA_output,
-        filename_text_extension="true",
+        filename_text_extension="false",
     ):
         pattern = pattern or "*"
         if pattern in ("true", "false"):
@@ -172,7 +179,7 @@ class LoboForgeLoadImageBatch:
         images = []
         filenames = []
         allow_rgba = allow_RGBA_output == "true"
-        strip_ext = filename_text_extension == "false"
+        strip_ext = filename_text_extension != "true"
 
         for item_i in range(count):
             image_id = select_image_id(order, seed, start_at, item_i, file_count)
@@ -201,7 +208,7 @@ class LoboForgeLoadImageBatch:
         seed,
         start_at,
         allow_RGBA_output,
-        filename_text_extension="true",
+        filename_text_extension="false",
     ):
         try:
             order = normalize_order(order)
@@ -229,7 +236,7 @@ class LoboForgeLoadImageBatch:
                 digests.append(file_sha256(selected))
             except OSError:
                 return float("NaN")
-        return ",".join(digests)
+        return f"{filename_text_extension}," + ",".join(digests)
 
 
 def _register_folder_route():
