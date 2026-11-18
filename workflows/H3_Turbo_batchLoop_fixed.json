@@ -2,7 +2,7 @@
   "id": "762c95b1-be0a-411d-86b2-f94e68402ff4",
   "revision": 0,
   "last_node_id": 203,
-  "last_link_id": 10002,
+  "last_link_id": 10003,
   "nodes": [
     {
       "id": 3,
@@ -106,7 +106,7 @@
     },
     {
       "id": 12,
-      "type": "ModelPreviewOverrideKJ",
+      "type": "LoboForgeModelPassthrough",
       "pos": [
         1826.5183384068846,
         668.3271880092113
@@ -128,23 +128,21 @@
         },
         {
           "name": "vae",
-          "shape": 7,
           "type": "VAE",
           "link": null
         },
         {
           "name": "audio_vae",
-          "shape": 7,
           "type": "VAE",
           "link": null
         },
         {
           "name": "preview_frames",
           "type": "INT",
+          "link": 330,
           "widget": {
             "name": "preview_frames"
-          },
-          "link": 330
+          }
         }
       ],
       "outputs": [
@@ -153,13 +151,13 @@
           "type": "MODEL",
           "links": [
             308
-          ]
+          ],
+          "slot_index": 0
         }
       ],
       "properties": {
-        "cnr_id": "comfyui-kjnodes",
         "ver": "3f20054214fec9f9234fd3841ae6f1e4287948f6",
-        "Node name for S&R": "ModelPreviewOverrideKJ",
+        "Node name for S&R": "LoboForgeModelPassthrough",
         "ue_properties": {
           "widget_ue_connectable": {},
           "input_ue_unconnectable": {},
@@ -167,13 +165,7 @@
         }
       },
       "widgets_values": [
-        1024,
-        80,
-        true,
-        9,
-        12,
-        "taeh3.safetensors",
-        ""
+        0
       ],
       "widgets_values_named": {
         "max_resolution": 1024,
@@ -185,7 +177,8 @@
         "preview": ""
       },
       "color": "#233",
-      "bgcolor": "#355"
+      "bgcolor": "#355",
+      "title": "Model passthrough (was KJ preview override)"
     },
     {
       "id": 36,
@@ -213,7 +206,7 @@
           "name": "MODEL",
           "type": "MODEL",
           "links": [
-            191
+            192
           ]
         }
       ],
@@ -381,7 +374,7 @@
           "links": []
         }
       ],
-      "title": "Bypassed \u2014 replaced by LoboForge Save Video (Named)",
+      "title": "Bypassed — replaced by LoboForge Save Video (Named)",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.39.2",
@@ -480,10 +473,10 @@
         }
       },
       "widgets_values": [
-        "**Resolution Selector reference \u2014 multiple = 32, before RTX.**\n\nThis selector treats 1 MP as 1024 \u00d7 1024 pixels. Dimensions are rounded to multiples of 32.\n\n| MP | 1:1 \u2014 Square | 3:2 \u2014 Photo | 4:3 \u2014 Standard | 16:9 \u2014 Widescreen |\n|---:|:---:|:---:|:---:|:---:|\n| 0.2 | 448 \u00d7 448 | 576 \u00d7 384 | 544 \u00d7 384 | 608 \u00d7 352 |\n| 0.3 | 576 \u00d7 576 | 672 \u00d7 448 | 640 \u00d7 480 | 736 \u00d7 416 |\n| 0.4 | 640 \u00d7 640 | 800 \u00d7 544 | 736 \u00d7 576 | 864 \u00d7 480 |\n| 0.5 | 736 \u00d7 736 | 896 \u00d7 576 | 832 \u00d7 640 | 960 \u00d7 544 |\n| 0.6 | 800 \u00d7 800 | 960 \u00d7 640 | 928 \u00d7 672 | 1056 \u00d7 608 |\n| 0.7 | 864 \u00d7 864 | 1056 \u00d7 704 | 992 \u00d7 736 | 1152 \u00d7 640 |\n| 0.8 | 928 \u00d7 928 | 1120 \u00d7 736 | 1056 \u00d7 800 | 1216 \u00d7 672 |\n| 0.9 | 960 \u00d7 960 | 1184 \u00d7 800 | 1120 \u00d7 832 | 1280 \u00d7 736 |\n| 0.98 | 1024 \u00d7 1024 | 1248 \u00d7 832 | 1184 \u00d7 864 | 1344 \u00d7 768 |\n| 1.0 | 1024 \u00d7 1024 | 1248 \u00d7 832 | 1184 \u00d7 896 | 1376 \u00d7 768 |\n| 1.2 | 1120 \u00d7 1120 | 1376 \u00d7 928 | 1280 \u00d7 960 | 1504 \u00d7 832 |\n| 1.5 | 1248 \u00d7 1248 | 1536 \u00d7 1024 | 1440 \u00d7 1088 | 1664 \u00d7 928 |\n| 1.8 | 1376 \u00d7 1376 | 1696 \u00d7 1120 | 1600 \u00d7 1184 | 1824 \u00d7 1024 |\n| 2.0 | 1440 \u00d7 1440 | 1760 \u00d7 1184 | 1664 \u00d7 1248 | 1920 \u00d7 1088 |\n\nThe second-pass upscale follows the actual first-pass aspect ratio, so its rounded dimensions can differ slightly from these references. RTX may increase the exported dimensions further."
+        "**Resolution Selector reference — multiple = 32, before RTX.**\n\nThis selector treats 1 MP as 1024 × 1024 pixels. Dimensions are rounded to multiples of 32.\n\n| MP | 1:1 — Square | 3:2 — Photo | 4:3 — Standard | 16:9 — Widescreen |\n|---:|:---:|:---:|:---:|:---:|\n| 0.2 | 448 × 448 | 576 × 384 | 544 × 384 | 608 × 352 |\n| 0.3 | 576 × 576 | 672 × 448 | 640 × 480 | 736 × 416 |\n| 0.4 | 640 × 640 | 800 × 544 | 736 × 576 | 864 × 480 |\n| 0.5 | 736 × 736 | 896 × 576 | 832 × 640 | 960 × 544 |\n| 0.6 | 800 × 800 | 960 × 640 | 928 × 672 | 1056 × 608 |\n| 0.7 | 864 × 864 | 1056 × 704 | 992 × 736 | 1152 × 640 |\n| 0.8 | 928 × 928 | 1120 × 736 | 1056 × 800 | 1216 × 672 |\n| 0.9 | 960 × 960 | 1184 × 800 | 1120 × 832 | 1280 × 736 |\n| 0.98 | 1024 × 1024 | 1248 × 832 | 1184 × 864 | 1344 × 768 |\n| 1.0 | 1024 × 1024 | 1248 × 832 | 1184 × 896 | 1376 × 768 |\n| 1.2 | 1120 × 1120 | 1376 × 928 | 1280 × 960 | 1504 × 832 |\n| 1.5 | 1248 × 1248 | 1536 × 1024 | 1440 × 1088 | 1664 × 928 |\n| 1.8 | 1376 × 1376 | 1696 × 1120 | 1600 × 1184 | 1824 × 1024 |\n| 2.0 | 1440 × 1440 | 1760 × 1184 | 1664 × 1248 | 1920 × 1088 |\n\nThe second-pass upscale follows the actual first-pass aspect ratio, so its rounded dimensions can differ slightly from these references. RTX may increase the exported dimensions further."
       ],
       "widgets_values_named": {
-        "text": "**Resolution Selector reference \u2014 multiple = 32, before RTX.**\n\nThis selector treats 1 MP as 1024 \u00d7 1024 pixels. Dimensions are rounded to multiples of 32.\n\n| MP | 1:1 \u2014 Square | 3:2 \u2014 Photo | 4:3 \u2014 Standard | 16:9 \u2014 Widescreen |\n|---:|:---:|:---:|:---:|:---:|\n| 0.2 | 448 \u00d7 448 | 576 \u00d7 384 | 544 \u00d7 384 | 608 \u00d7 352 |\n| 0.3 | 576 \u00d7 576 | 672 \u00d7 448 | 640 \u00d7 480 | 736 \u00d7 416 |\n| 0.4 | 640 \u00d7 640 | 800 \u00d7 544 | 736 \u00d7 576 | 864 \u00d7 480 |\n| 0.5 | 736 \u00d7 736 | 896 \u00d7 576 | 832 \u00d7 640 | 960 \u00d7 544 |\n| 0.6 | 800 \u00d7 800 | 960 \u00d7 640 | 928 \u00d7 672 | 1056 \u00d7 608 |\n| 0.7 | 864 \u00d7 864 | 1056 \u00d7 704 | 992 \u00d7 736 | 1152 \u00d7 640 |\n| 0.8 | 928 \u00d7 928 | 1120 \u00d7 736 | 1056 \u00d7 800 | 1216 \u00d7 672 |\n| 0.9 | 960 \u00d7 960 | 1184 \u00d7 800 | 1120 \u00d7 832 | 1280 \u00d7 736 |\n| 0.98 | 1024 \u00d7 1024 | 1248 \u00d7 832 | 1184 \u00d7 864 | 1344 \u00d7 768 |\n| 1.0 | 1024 \u00d7 1024 | 1248 \u00d7 832 | 1184 \u00d7 896 | 1376 \u00d7 768 |\n| 1.2 | 1120 \u00d7 1120 | 1376 \u00d7 928 | 1280 \u00d7 960 | 1504 \u00d7 832 |\n| 1.5 | 1248 \u00d7 1248 | 1536 \u00d7 1024 | 1440 \u00d7 1088 | 1664 \u00d7 928 |\n| 1.8 | 1376 \u00d7 1376 | 1696 \u00d7 1120 | 1600 \u00d7 1184 | 1824 \u00d7 1024 |\n| 2.0 | 1440 \u00d7 1440 | 1760 \u00d7 1184 | 1664 \u00d7 1248 | 1920 \u00d7 1088 |\n\nThe second-pass upscale follows the actual first-pass aspect ratio, so its rounded dimensions can differ slightly from these references. RTX may increase the exported dimensions further."
+        "text": "**Resolution Selector reference — multiple = 32, before RTX.**\n\nThis selector treats 1 MP as 1024 × 1024 pixels. Dimensions are rounded to multiples of 32.\n\n| MP | 1:1 — Square | 3:2 — Photo | 4:3 — Standard | 16:9 — Widescreen |\n|---:|:---:|:---:|:---:|:---:|\n| 0.2 | 448 × 448 | 576 × 384 | 544 × 384 | 608 × 352 |\n| 0.3 | 576 × 576 | 672 × 448 | 640 × 480 | 736 × 416 |\n| 0.4 | 640 × 640 | 800 × 544 | 736 × 576 | 864 × 480 |\n| 0.5 | 736 × 736 | 896 × 576 | 832 × 640 | 960 × 544 |\n| 0.6 | 800 × 800 | 960 × 640 | 928 × 672 | 1056 × 608 |\n| 0.7 | 864 × 864 | 1056 × 704 | 992 × 736 | 1152 × 640 |\n| 0.8 | 928 × 928 | 1120 × 736 | 1056 × 800 | 1216 × 672 |\n| 0.9 | 960 × 960 | 1184 × 800 | 1120 × 832 | 1280 × 736 |\n| 0.98 | 1024 × 1024 | 1248 × 832 | 1184 × 864 | 1344 × 768 |\n| 1.0 | 1024 × 1024 | 1248 × 832 | 1184 × 896 | 1376 × 768 |\n| 1.2 | 1120 × 1120 | 1376 × 928 | 1280 × 960 | 1504 × 832 |\n| 1.5 | 1248 × 1248 | 1536 × 1024 | 1440 × 1088 | 1664 × 928 |\n| 1.8 | 1376 × 1376 | 1696 × 1120 | 1600 × 1184 | 1824 × 1024 |\n| 2.0 | 1440 × 1440 | 1760 × 1184 | 1664 × 1248 | 1920 × 1088 |\n\nThe second-pass upscale follows the actual first-pass aspect ratio, so its rounded dimensions can differ slightly from these references. RTX may increase the exported dimensions further."
       },
       "color": "#222",
       "bgcolor": "#000"
@@ -839,7 +832,7 @@
     },
     {
       "id": 59,
-      "type": "Seed (rgthree)",
+      "type": "LoboForgeSeed",
       "pos": [
         1450,
         60
@@ -853,43 +846,46 @@
       },
       "order": 10,
       "mode": 0,
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "seed",
+          "type": "INT",
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
       "outputs": [
         {
-          "dir": 4,
           "name": "SEED",
-          "shape": 3,
           "type": "INT",
           "links": [
             304
-          ]
+          ],
+          "slot_index": 0
         }
       ],
       "properties": {
-        "cnr_id": "rgthree-comfy",
         "ver": "1.0.2511270846",
-        "randomMax": 1125899906842624,
-        "randomMin": 0,
         "ue_properties": {
           "widget_ue_connectable": {},
           "version": "7.8",
           "input_ue_unconnectable": {}
-        }
+        },
+        "Node name for S&R": "LoboForgeSeed"
       },
       "widgets_values": [
-        -1,
-        "",
-        "",
-        ""
+        -1
       ],
       "widgets_values_named": {
         "seed": -1,
-        "\ud83c\udfb2 Randomize Each Time": "",
-        "\ud83c\udfb2 New Fixed Random": "",
+        "🎲 Randomize Each Time": "",
+        "🎲 New Fixed Random": "",
         "USE_LAST_SEED": ""
       },
       "color": "#332922",
-      "bgcolor": "#593930"
+      "bgcolor": "#593930",
+      "title": "Seed"
     },
     {
       "id": 2,
@@ -912,7 +908,8 @@
           "type": "STRING",
           "links": [
             318,
-            471
+            471,
+            10003
           ]
         }
       ],
@@ -1008,102 +1005,6 @@
         "sink_conditioning": "exact_kv_and_rows",
         "verbose": false
       }
-    },
-    {
-      "id": 101,
-      "type": "H3PowerLoraStack",
-      "pos": [
-        31.72080152195279,
-        925.4468903342164
-      ],
-      "size": [
-        244.34921875,
-        240
-      ],
-      "flags": {},
-      "order": 20,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "shape": 7,
-          "type": "MODEL",
-          "link": 191
-        },
-        {
-          "name": "adaln_modality",
-          "shape": 7,
-          "type": "H3_MODALITY",
-          "link": null
-        },
-        {
-          "name": "schedule",
-          "shape": 7,
-          "type": "H3_SCHEDULE",
-          "link": null
-        },
-        {
-          "name": "loras",
-          "shape": 7,
-          "type": "H3_LORA_STACK",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            192
-          ]
-        },
-        {
-          "name": "report",
-          "type": "STRING",
-          "links": []
-        }
-      ],
-      "properties": {
-        "aux_id": "cicalooo/ComfyUI-H3-PowerLoraStack",
-        "ver": "9ddfc0c84179883d12cab1404576bb49866cd43b",
-        "Node name for S&R": "H3PowerLoraStack",
-        "h3RowFormat": 2,
-        "h3Rows": [
-          {
-            "on": false,
-            "lora": "MMH3-RealismSlider-V1.safetensors",
-            "strength": 1,
-            "autoApplied": false
-          }
-        ],
-        "ue_properties": {
-          "widget_ue_connectable": {},
-          "version": "7.8",
-          "input_ue_unconnectable": {}
-        }
-      },
-      "widgets_values": [
-        "auto",
-        "auto",
-        {
-          "on": false,
-          "lora": "MMH3-RealismSlider-V1.safetensors",
-          "strength": 1,
-          "autoApplied": false
-        }
-      ],
-      "widgets_values_named": {
-        "quantized_layers": "auto",
-        "adaln_port": "auto",
-        "lora_1": {
-          "on": false,
-          "lora": "MMH3-RealismSlider-V1.safetensors",
-          "strength": 1,
-          "autoApplied": false
-        }
-      },
-      "color": "#2a363b",
-      "bgcolor": "#3f5159"
     },
     {
       "id": 102,
@@ -1228,7 +1129,7 @@
           "link": 310
         },
         {
-          "label": "Duration \u2014 Preview + Full",
+          "label": "Duration — Preview + Full",
           "name": "on_false",
           "type": "FLOAT",
           "link": 311
@@ -1251,7 +1152,7 @@
         },
         {
           "label": "Final megapixels",
-          "name": "mode.megapixels",
+          "name": "megapixels",
           "type": "FLOAT",
           "widget": {
             "name": "mode.megapixels"
@@ -1475,7 +1376,7 @@
     },
     {
       "id": 39,
-      "type": "RTXVideoSuperResolution",
+      "type": "ImageScaleBy",
       "pos": [
         2999.4659185488918,
         329.5478510482925
@@ -1491,25 +1392,39 @@
       "mode": 0,
       "inputs": [
         {
-          "name": "images",
+          "name": "image",
           "type": "IMAGE",
           "link": 337
+        },
+        {
+          "name": "upscale_method",
+          "type": "COMBO",
+          "widget": {
+            "name": "upscale_method"
+          }
+        },
+        {
+          "name": "scale_by",
+          "type": "FLOAT",
+          "widget": {
+            "name": "scale_by"
+          }
         }
       ],
       "outputs": [
         {
-          "name": "upscaled_images",
+          "name": "IMAGE",
           "type": "IMAGE",
           "links": [
             428,
             429
-          ]
+          ],
+          "slot_index": 0
         }
       ],
       "properties": {
-        "cnr_id": "comfyui_nvidia_rtx_nodes",
         "ver": "892515e3eb9a4920a131a502a047e47adca9eb0d",
-        "Node name for S&R": "RTXVideoSuperResolution",
+        "Node name for S&R": "ImageScaleBy",
         "ue_properties": {
           "widget_ue_connectable": {
             "resize_type": true,
@@ -1521,11 +1436,8 @@
         }
       },
       "widgets_values": [
-        "scale by multiplier",
-        1.2,
-        "ULTRA",
-        1,
-        "8-bit RGB"
+        "lanczos",
+        1.2
       ],
       "widgets_values_named": {
         "resize_type": "scale by multiplier",
@@ -1535,7 +1447,8 @@
         "image_encoding": "8-bit RGB"
       },
       "color": "#233",
-      "bgcolor": "#355"
+      "bgcolor": "#355",
+      "title": "Upscale by (was RTX VSR)"
     },
     {
       "id": 154,
@@ -1594,7 +1507,7 @@
           ]
         }
       ],
-      "title": "Output grain strength \u2014 0 = OFF",
+      "title": "Output grain strength — 0 = OFF",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.33.2",
@@ -1815,7 +1728,7 @@
       ],
       "flags": {},
       "order": 18,
-      "mode": 0,
+      "mode": 4,
       "inputs": [
         {
           "name": "text",
@@ -1852,7 +1765,8 @@
         "file_name": "note",
         "file_extension": "txt",
         "overwrite": true
-      }
+      },
+      "title": "Bypassed — caption now written by Save Video (Named)"
     },
     {
       "id": 199,
@@ -1912,6 +1826,11 @@
           "name": "filename_text",
           "type": "STRING",
           "link": 10002
+        },
+        {
+          "name": "caption",
+          "type": "STRING",
+          "link": 10003
         }
       ],
       "outputs": [
@@ -1921,7 +1840,7 @@
           "links": []
         }
       ],
-      "title": "Save each batch item as its own mp4",
+      "title": "Save each batch item as mp4 + matching .txt caption",
       "properties": {
         "Node name for S&R": "LoboForgeSaveVideoNamed",
         "ue_properties": {
@@ -1933,7 +1852,8 @@
       "widgets_values": [
         "video/H3_batch",
         "mp4",
-        "auto"
+        "auto",
+        true
       ],
       "widgets_values_named": {
         "folder": "video/H3_batch",
@@ -1999,7 +1919,7 @@
       "title": "Batch save fix",
       "properties": {},
       "widgets_values": [
-        "### Batch save fix\n\n- `LoboForge Load Folder Images` already **fans out** (`OUTPUT_IS_LIST`); MiniMax H3 does **not** iterate a stacked batch (`img[:1]` only).\n- Set **how_many=0** for every image (or N for a subset).\n- **LoboForge Save Video (Named)** writes `output/video/H3_batch/<stem>_#####_.mp4` per item.\n- Inner subgraph SaveVideo is bypassed so it cannot overwrite with one shared prefix.\n- Restart ComfyUI after updating LoboForge, then Queue Prompt once.\n"
+        "### Batch save fix\n\n- `LoboForge Load Folder Images` already **fans out** (`OUTPUT_IS_LIST`); MiniMax H3 does **not** iterate a stacked batch (`img[:1]` only).\n- Set **how_many=0** for every image (or N for a subset).\n- **LoboForge Save Video (Named)** writes `output/video/H3_batch/<stem>_#####_.mp4` per item.\n- Inner subgraph SaveVideo is bypassed so it cannot overwrite with one shared prefix.\n- Restart ComfyUI after updating LoboForge, then Queue Prompt once.\n- Prompt is also saved as `<same_basename>.txt` next to each mp4.\n"
       ]
     }
   ],
@@ -2030,7 +1950,7 @@
     ],
     [
       192,
-      101,
+      36,
       0,
       38,
       0,
@@ -2213,14 +2133,6 @@
       "IMAGE"
     ],
     [
-      191,
-      36,
-      0,
-      101,
-      0,
-      "MODEL"
-    ],
-    [
       330,
       151,
       2,
@@ -2338,6 +2250,14 @@
       1,
       201,
       1,
+      "STRING"
+    ],
+    [
+      10003,
+      2,
+      0,
+      201,
+      2,
       "STRING"
     ]
   ],
@@ -2561,7 +2481,7 @@
               109
             ],
             "localized_name": "on_false",
-            "label": "Duration \u2014 Preview + Full",
+            "label": "Duration — Preview + Full",
             "shape": 7,
             "pos": [
               -179.849609375,
@@ -2599,7 +2519,7 @@
           },
           {
             "id": "fd84f5fd-1b9a-4e30-8358-fbc699996687",
-            "name": "mode.megapixels",
+            "name": "megapixels",
             "type": "FLOAT",
             "linkIds": [
               176
@@ -3283,7 +3203,7 @@
           },
           {
             "id": 86,
-            "type": "HaltExecution",
+            "type": "LoboForgeExecutionBarrier",
             "pos": [
               2327.428403530574,
               536.6510130323312
@@ -3299,53 +3219,44 @@
             "mode": 0,
             "inputs": [
               {
-                "localized_name": "input",
                 "name": "input",
                 "type": "*",
                 "link": 423
               },
               {
-                "localized_name": "run_after",
                 "name": "run_after",
-                "shape": 7,
                 "type": "*",
-                "link": 160
+                "link": 160,
+                "shape": 7
               }
             ],
             "outputs": [
               {
-                "localized_name": "*",
                 "name": "*",
                 "type": "*",
                 "links": [
                   183
-                ]
+                ],
+                "slot_index": 0
               }
             ],
-            "title": "\ud83d\uded1 Halt Execution (Audio VAE Last)",
+            "title": "Execution barrier (audio VAE after images)",
             "properties": {
-              "cnr_id": "ControlFlowUtils",
               "ver": "b675bc6c2c6847d53d8a010fed1497a1b565c144",
-              "Node name for S&R": "HaltExecution",
+              "Node name for S&R": "LoboForgeExecutionBarrier",
               "ue_properties": {
                 "widget_ue_connectable": {},
                 "version": "7.8",
                 "input_ue_unconnectable": {}
               }
             },
-            "widgets_values": [
-              true,
-              false,
-              false,
-              false,
-              "\u27a1\ufe0f EXECUTION CONTINUING! Time: 16:38:27.599006"
-            ],
+            "widgets_values": [],
             "widgets_values_named": {
               "disable": true,
               "method": false,
               "clear_queue": false,
               "alert_on_trigger": false,
-              "Status": "\u27a1\ufe0f EXECUTION CONTINUING! Time: 16:38:27.599006"
+              "Status": "➡️ EXECUTION CONTINUING! Time: 16:38:27.599006"
             }
           },
           {
@@ -3417,7 +3328,7 @@
           },
           {
             "id": 26,
-            "type": "MinimaxH3LatentUpscaler3D",
+            "type": "LoboForgeMiniMaxH3LatentUpscaleMegapixels",
             "pos": [
               1470,
               180
@@ -3431,35 +3342,46 @@
             "mode": 0,
             "inputs": [
               {
-                "localized_name": "latent",
                 "name": "latent",
-                "type": "*",
+                "type": "LATENT",
                 "link": 35
               },
               {
-                "localized_name": "megapixels",
-                "name": "mode.megapixels",
-                "type": "FLOAT",
+                "name": "model_name",
+                "type": "COMBO",
                 "widget": {
-                  "name": "mode.megapixels"
-                },
-                "link": 176
+                  "name": "model_name"
+                }
+              },
+              {
+                "name": "megapixels",
+                "type": "FLOAT",
+                "link": 176,
+                "widget": {
+                  "name": "megapixels"
+                }
+              },
+              {
+                "name": "align",
+                "type": "INT",
+                "widget": {
+                  "name": "align"
+                }
               }
             ],
             "outputs": [
               {
-                "localized_name": "latent",
                 "name": "latent",
-                "type": "*",
+                "type": "LATENT",
                 "links": [
                   8
-                ]
+                ],
+                "slot_index": 0
               }
             ],
             "properties": {
-              "aux_id": "LBH-123-AI/Comfyui_Minimax_h3_latent_Upscaler",
               "ver": "6a4b191e8af583b7c097f564690325f91d18c2e2",
-              "Node name for S&R": "MinimaxH3LatentUpscaler3D",
+              "Node name for S&R": "LoboForgeMiniMaxH3LatentUpscaleMegapixels",
               "ue_properties": {
                 "widget_ue_connectable": {},
                 "input_ue_unconnectable": {},
@@ -3468,13 +3390,8 @@
             },
             "widgets_values": [
               "minimax_h3_latent_upscaler_3d_fp16.safetensors",
-              "megapixels",
-              1,
-              32,
-              true,
-              true,
-              "cuda",
-              "fp16"
+              1.0,
+              32
             ],
             "widgets_values_named": {
               "model_name": "minimax_h3_latent_upscaler_3d_fp16.safetensors",
@@ -4185,7 +4102,7 @@
             "origin_id": -10,
             "origin_slot": 11,
             "target_id": 26,
-            "target_slot": 1,
+            "target_slot": 2,
             "type": "FLOAT"
           },
           {
@@ -4490,7 +4407,7 @@
           },
           {
             "id": 135,
-            "type": "LokkenVideoPostProcessing",
+            "type": "LoboForgeEncodeVideo",
             "pos": [
               500,
               120
@@ -4504,83 +4421,92 @@
             "mode": 0,
             "inputs": [
               {
-                "localized_name": "video",
-                "name": "video",
-                "shape": 7,
-                "type": "VIDEO",
-                "link": null
-              },
-              {
-                "localized_name": "images",
                 "name": "images",
-                "shape": 7,
                 "type": "IMAGE",
                 "link": 424
               },
               {
-                "label": "audio",
-                "localized_name": "audio_pass",
+                "name": "fps",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "fps"
+                }
+              },
+              {
+                "name": "crf",
+                "type": "INT",
+                "widget": {
+                  "name": "crf"
+                }
+              },
+              {
+                "name": "grain",
+                "type": "BOOLEAN",
+                "link": 402,
+                "widget": {
+                  "name": "grain"
+                }
+              },
+              {
+                "name": "grain_intensity",
+                "type": "FLOAT",
+                "link": 400,
+                "widget": {
+                  "name": "grain_intensity"
+                }
+              },
+              {
+                "name": "saturation_mix",
+                "type": "FLOAT",
+                "widget": {
+                  "name": "saturation_mix"
+                }
+              },
+              {
+                "name": "encoder_preset",
+                "type": "COMBO",
+                "link": 407,
+                "widget": {
+                  "name": "encoder_preset"
+                }
+              },
+              {
                 "name": "audio_pass",
-                "shape": 7,
                 "type": "AUDIO",
                 "link": 425
               },
               {
-                "localized_name": "grain",
-                "name": "grain",
-                "type": "BOOLEAN",
-                "widget": {
-                  "name": "grain"
-                },
-                "link": 402
-              },
-              {
-                "localized_name": "grain_intensity",
-                "name": "grain_intensity",
-                "type": "FLOAT",
-                "widget": {
-                  "name": "grain_intensity"
-                },
-                "link": 400
-              },
-              {
-                "localized_name": "encoder_preset",
-                "name": "encoder_preset",
-                "type": "COMBO",
-                "widget": {
-                  "name": "encoder_preset"
-                },
-                "link": 407
+                "name": "video",
+                "type": "VIDEO",
+                "link": null
               }
             ],
             "outputs": [
               {
-                "localized_name": "VIDEO",
                 "name": "VIDEO",
                 "type": "VIDEO",
                 "links": [
                   426
-                ]
+                ],
+                "slot_index": 0
               },
               {
-                "localized_name": "FPS",
                 "name": "FPS",
                 "type": "FLOAT",
-                "links": []
+                "links": [],
+                "slot_index": 1
               },
               {
-                "localized_name": "stats",
                 "name": "stats",
                 "type": "STRING",
-                "links": []
+                "links": [],
+                "slot_index": 2
               }
             ],
-            "title": "Encode one clip + first-pass audio (24 FPS / CRF 18)",
+            "title": "Encode clip + audio (24 FPS / CRF 18)",
             "properties": {
-              "cnr_id": "lokken-videotools",
               "ver": "4d7550543483b00bf281d0bf3ba36d7daeb5ffe9",
-              "Node name for S&R": "LokkenVideoPostProcessing",
-              "aux_id": "LordLocksley/ComfyUI-Lokken-VideoTools",
+              "Node name for S&R": "LoboForgeEncodeVideo",
               "ue_properties": {
                 "widget_ue_connectable": {},
                 "version": "7.8",
@@ -4588,22 +4514,12 @@
               }
             },
             "widgets_values": [
+              24.0,
+              18,
               false,
-              "lanczos",
-              2,
-              false,
-              24,
-              2,
-              false,
-              true,
               0.005,
               0.25,
-              true,
-              18,
-              "custom",
-              4,
-              "slow",
-              "auto"
+              "medium"
             ],
             "widgets_values_named": {
               "upscale": false,
@@ -4752,7 +4668,7 @@
             "origin_id": -10,
             "origin_slot": 6,
             "target_id": 135,
-            "target_slot": 5,
+            "target_slot": 6,
             "type": "COMBO"
           },
           {
@@ -4760,7 +4676,7 @@
             "origin_id": -10,
             "origin_slot": 0,
             "target_id": 135,
-            "target_slot": 1,
+            "target_slot": 0,
             "type": "IMAGE"
           },
           {
@@ -4768,7 +4684,7 @@
             "origin_id": -10,
             "origin_slot": 4,
             "target_id": 135,
-            "target_slot": 2,
+            "target_slot": 7,
             "type": "AUDIO"
           },
           {
@@ -4812,7 +4728,7 @@
         },
         "revision": 0,
         "config": {},
-        "name": "Output saving quality \u2014 encoder preset",
+        "name": "Output saving quality — encoder preset",
         "inputNode": {
           "id": -10,
           "bounding": [
@@ -4906,7 +4822,7 @@
                 "links": []
               }
             ],
-            "title": "Encoder presets \u2014 fixed workflow options",
+            "title": "Encoder presets — fixed workflow options",
             "properties": {
               "cnr_id": "comfy-core",
               "ver": "0.39.2",
@@ -4950,7 +4866,7 @@
           },
           {
             "id": 180,
-            "type": "Any Switch (rgthree)",
+            "type": "LoboForgeAnySwitch",
             "pos": [
               150,
               7140
@@ -5004,11 +4920,10 @@
                 ]
               }
             ],
-            "title": "Preset passthrough \u2014 one connected input",
+            "title": "Preset passthrough",
             "properties": {
-              "cnr_id": "rgthree-comfy",
               "ver": "1.0.2610050029",
-              "Node name for S&R": "Any Switch (rgthree)",
+              "Node name for S&R": "LoboForgeAnySwitch",
               "ue_properties": {
                 "widget_ue_connectable": {},
                 "version": "7.8",

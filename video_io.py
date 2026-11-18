@@ -493,6 +493,16 @@ class LoboForgeSaveVideoNamed:
                 "format": (["auto", "mp4", "mkv", "webm", "mov"], {"default": "mp4"}),
                 "codec": (["auto", "h264", "av1", "prores"], {"default": "auto"}),
             },
+            "optional": {
+                "caption": ("STRING", {
+                    "forceInput": True,
+                    "tooltip": "Caption/prompt text written next to the mp4 as the same basename .txt.",
+                }),
+                "save_caption": ("BOOLEAN", {
+                    "default": True,
+                    "tooltip": "When caption is connected, also write <same_name>.txt beside the video.",
+                }),
+            },
             "hidden": {
                 "prompt": "PROMPT",
                 "extra_pnginfo": "EXTRA_PNGINFO",
@@ -506,7 +516,7 @@ class LoboForgeSaveVideoNamed:
     FUNCTION = "save"
     DESCRIPTION = (
         "Save each fan-out VIDEO under output/<folder>/<stem>_#####_.mp4. "
-        "Prefer this over a shared SaveVideo prefix when batching folder images."
+        "Optional caption writes the same basename .txt beside the video."
     )
 
     def save(
@@ -516,6 +526,8 @@ class LoboForgeSaveVideoNamed:
         folder="video/H3_batch",
         format="mp4",
         codec="auto",
+        caption=None,
+        save_caption=True,
         prompt=None,
         extra_pnginfo=None,
     ):
@@ -547,6 +559,9 @@ class LoboForgeSaveVideoNamed:
             codec=Types.VideoCodec(codec_name),
             metadata=metadata,
         )
+        if save_caption and caption is not None:
+            caption_path = os.path.splitext(path)[0] + ".txt"
+            _write_text(caption_path, caption if isinstance(caption, str) else str(caption))
         return {
             "ui": PreviewVideo([SavedResult(file, subfolder, FolderType.output)]).as_dict(),
             "result": (video,),

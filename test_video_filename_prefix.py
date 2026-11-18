@@ -65,6 +65,40 @@ class VideoFilenamePrefixTests(unittest.TestCase):
                     "video/H3_batch/alpha",
                 )
 
+    def test_save_named_writes_matching_caption_txt(self):
+        from custom_nodes.LoboForge.video_io import LoboForgeSaveVideoNamed
+
+        class FakeVideo:
+            def get_dimensions(self):
+                return (8, 8)
+
+            def save_to(self, path, **kwargs):
+                Path(path).parent.mkdir(parents=True, exist_ok=True)
+                Path(path).write_bytes(b"mp4")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch(
+                "custom_nodes.LoboForge.video_io.folder_paths.get_output_directory",
+                return_value=tmp,
+            ):
+                node = LoboForgeSaveVideoNamed()
+                node.save(
+                    FakeVideo(),
+                    filename_text="shot.png",
+                    folder="video/H3_batch",
+                    format="mp4",
+                    codec="h264",
+                    caption="a test caption",
+                    save_caption=True,
+                )
+                folder = Path(tmp, "video", "H3_batch")
+                mp4s = list(folder.glob("*.mp4"))
+                txts = list(folder.glob("*.txt"))
+                self.assertEqual(len(mp4s), 1)
+                self.assertEqual(len(txts), 1)
+                self.assertEqual(mp4s[0].with_suffix(".txt"), txts[0])
+                self.assertEqual(txts[0].read_text(encoding="utf-8"), "a test caption")
+
 
 if __name__ == "__main__":
     unittest.main()
