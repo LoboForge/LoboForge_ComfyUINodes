@@ -275,6 +275,14 @@ class LoboForgeEncodeVideo:
                 grain_intensity,
                 saturation_mix=saturation_mix,
             ).to(device="cpu")
+        # libx264 requires even W/H; ImageScaleBy (e.g. 1.2x) can produce odds.
+        if frames.ndim == 4 and frames.shape[1] >= 1 and frames.shape[2] >= 1:
+            h = int(frames.shape[1])
+            w = int(frames.shape[2])
+            h2 = h - (h % 2)
+            w2 = w - (w % 2)
+            if h2 != h or w2 != w:
+                frames = frames[:, :h2, :w2, :].contiguous()
         video_out = InputImpl.VideoFromComponents(
             Types.VideoComponents(
                 images=frames,
